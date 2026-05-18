@@ -6,6 +6,11 @@
     box-sizing: border-box;
 }
 
+body {
+  overflow-y: auto;  /* Allows vertical scroll only when needed */
+  overflow-x: hidden; /* Prevents unwanted horizontal scrolling */
+  overscroll-behavior-y: none;
+}
 
 /* -- HEADER --*/
 .applogo {
@@ -34,7 +39,6 @@ header {
     text-decoration: none;
     font-size: 1.2rem;
     cursor: pointer;
-    
 }
 
 .userutil {
@@ -72,6 +76,79 @@ header {
     transition: transform 0.3s ease;
 }
 
+/* -- MAIN -- */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1s ease;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background-image: url("/assets/images/beach.png");
+    width: 100%;
+    width: 1440px;
+    height: 500px;
+}
+
+.hero h1 {
+    text-align: center;
+}
+
+.hero .discover-btn {
+    color: #fff;
+    background: #000;
+    border: none;
+    padding: 1.0rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.travel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+    margin: 2rem 0;
+    background-color: #64DA8E;
+    min-width: 1000px;
+    padding: 0rem 0rem 0rem 2rem;
+    border-radius: 20px;
+}
+.travel .paperplane-img {
+    width: 2rem;
+}
+
+.travel .loc-btn {
+    display: inline-flex;
+    color: #000000;
+    background: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.travel .travel-btn {
+    display: inline-flex;
+    color: #fff;
+    align-items: center;
+    background: #000;
+    border: none;
+    padding: 2rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    cursor: pointer;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+}
 /* -- Animation -- */
 
 @keyframes fadeIn {
@@ -106,4 +183,12 @@ header {
 .nav a:hover::after {
     /* Scale the line to its full width on hover */
     transform: scaleX(1);
+}
+
+.discover-btn:hover {
+    transform: scale(1.1);
+}
+
+.travel .loc-btn:hover {
+    transform: scale(1.1);
 }
