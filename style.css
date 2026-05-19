@@ -1,4 +1,3 @@
-
 /* -- GLOBAL -- */
 * {
     margin: 0;
@@ -7,7 +6,7 @@
 }
 
 body {
-  overflow-x: hidden; /* Prevents unwanted horizontal scrolling */
+  overflow-x: hidden; 
   overscroll-behavior-y: none;
   display: flex;
   flex-direction: column;
@@ -60,7 +59,6 @@ header .nav a {
     align-items: center;
     gap: 2rem;
     cursor: pointer;
-    
 }
 
 .userutil .util {
@@ -91,6 +89,80 @@ header .nav a {
     transition: transform 0.3s ease;
 }
 
+/* -- DROPDOWN SYSTEM -- */
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%; 
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    background-color: #ffffff;
+    min-width: 580px;
+    box-shadow: 0px 15px 35px rgba(0,0,0,0.15);
+    border-radius: 15px;
+    padding: 2.5rem;
+    z-index: 1000;
+    margin-top: 10px; 
+}
+
+/* Invisible bridge to prevent menu closing on mouse move */
+.dropdown-content::before {
+    content: "";
+    position: absolute;
+    top: -20px; 
+    left: 0;
+    width: 100%;
+    height: 20px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-grid {
+    display: flex;
+    gap: 4rem;
+}
+
+.dropdown-grid .column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.dropdown-grid h3 {
+    font-size: 1.1rem;
+    color: #000;
+    margin: 1.5rem 0 0.8rem 0;
+    font-weight: 700;
+}
+
+.dropdown-grid h3:first-child {
+    margin-top: 0;
+}
+
+.dropdown-grid a {
+    color: #444 !important; 
+    font-size: 0.95rem !important;
+    padding: 6px 0 !important;
+    font-weight: 400 !important;
+}
+
+.dropdown-grid a:hover {
+    color: #000000 !important;
+}
+
+/* Ensure sub-links in dropdown don't get the underline animation */
+.dropdown-content a::after {
+    display: none !important;
+}
+
 /* -- MAIN -- */
 main {
     display: flex;
@@ -98,7 +170,6 @@ main {
     align-items: center;
     animation: fadeIn 1s ease;
     width: 100%;
-
 }
 
 .hero {
@@ -214,7 +285,6 @@ main {
 @media (max-width: 425px) {
     main {
         width: 100%;
-        
     }
     body {
         width: 100%;
@@ -246,17 +316,10 @@ main {
     }
 }
 
-
-
-/* -- Animation -- */
-
+/* -- ANIMATIONS & EFFECTS -- */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {        
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .signin:hover {
@@ -271,16 +334,14 @@ main {
     bottom: 0;
     left: 0;
     background-color: #000;
-    /* Hide the line initially by scaling it to 0 */
     transform: scaleX(0);
-    /* Set the starting point to the left side */
     transform-origin: bottom left;
-    /* Smooth transition for the scale change */
     transition: transform 0.3s ease-out;
 }
 
-.nav a:hover::after {
-    /* Scale the line to its full width on hover */
+/* Keep underline visible on hover and during active dropdown interaction */
+.nav a:hover::after,
+.dropdown:hover .dropbtn::after {
     transform: scaleX(1);
 }
 
