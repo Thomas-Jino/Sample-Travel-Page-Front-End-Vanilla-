@@ -201,14 +201,13 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    gap: 0;
     align-items: center;
     background: #ffffff;
-    padding: 0.5rem 1.5rem;
+    padding: 1rem 1rem;
     border-radius: 50px; /* Modern "Pill" shape */
     box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle floating shadow */
-    width: 100%;
-    max-width: 800px; /* Prevents it from getting too wide */
+    width: 80%;
+    /*max-width: 800px; */ /* Prevents it from getting too wide */
     border: 2px solid #000000;
     margin: 2rem;
 }
@@ -217,8 +216,7 @@ main {
 .input-group {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+    gap: 1.2rem;
     flex: 1; /* Makes them grow equally */
     padding: 0.5rem;
 }
@@ -248,7 +246,7 @@ main {
     background: #000;
     color: #fff;
     border: none;
-    padding: 0.8rem 1.5rem;
+    padding: 0.8rem 1rem;
     border-radius: 30px;
     cursor: pointer;
     font-weight: 600;
@@ -264,6 +262,146 @@ main {
     width: 1rem;
 }
 
+/* Container to allow mouse dragging/scrolling */
+.marquee-container {
+    overflow-x: auto;
+    cursor: grab;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.marquee-row {
+    display: flex;
+    gap: 1.5rem;
+    width: fit-content; /* Ensure row takes width of contents */
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Row 1: Left to Right */
+.marquee-l-to-r {
+    animation: scroll-l-to-r 20s linear infinite;
+}
+
+/* Row 2: Right to Left */
+.marquee-r-to-l {
+    animation: scroll-r-to-l 20s linear infinite;
+}
+
+/* Card Styling */
+.place {
+    flex: 0 0 220px; /* Fixed width for cards */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.place-img {
+    width: 220px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    margin-bottom: 0.8rem;
+}
+
+.place h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #000000;
+    color: white;
+    padding: 2rem;
+    margin-top: 5rem;
+    position: relative;
+    gap: 25px;
+  }
+  
+  .footer-column {
+    flex: 1;
+    margin: 0 20px;
+    min-width: 200px;
+  }
+  
+  .footer-h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-left: 4px solid white;
+    padding-left: 10px;
+    color: #ffffff;
+  }
+  
+  .footer-paragraph {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ffffff;
+  }
+  
+  .footer-links {
+    list-style: none;
+  }
+  
+  .footer-links li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .footer-links a:hover {
+    color: white;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .social-icons img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .social-icons img:hover {
+    transform: scale(1.1);
+  }
+  
+  .footer-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .footer-text1,
+  .footer-text2 {
+    color: white;
+    text-align: center;
+  }
+  
+  .footer-text1 {
+    font-size: 15px;
+  }
+  
+  .footer-text2 {
+    font-size: 12px;
+  }
+
+.name-credit {
+    color: white;
+    font-size: 0.9em;
+}
+.name-credit:hover {
+  color: white;
+}
 /* -- RESPONSIVE -- */
 @media (max-width: 768px) {
     header {
@@ -286,12 +424,12 @@ main {
     }
     .travel {
         flex-direction: column;
-        gap: 1rem;
+        gap: 2rem;
         align-items: center;
 
     }
     .input-group {
-        width: 100%;
+        width: 90%;
         border-bottom: 1px solid #000000; /* Divider for mobile list view */
         padding-bottom: 0.5rem;
     }
@@ -302,6 +440,8 @@ main {
         width: 100%;
         margin-top: 1rem;
     }
+    .place { flex: 0 0 160px; }
+    .place-img { width: 160px; height: 220px; }
 }
 
 @media (max-width: 425px) {
@@ -331,7 +471,7 @@ main {
     .travel {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 2rem;
         align-items: center;
     }
 }
@@ -375,4 +515,14 @@ main {
 
 .travel .loc-btn:hover {
     transform: scale(1.1);
+}
+
+@keyframes scroll-l-to-r {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes scroll-r-to-l {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
