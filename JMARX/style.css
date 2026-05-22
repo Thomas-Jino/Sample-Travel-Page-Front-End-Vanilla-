@@ -1,0 +1,527 @@
+/* -- GLOBAL -- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden; 
+  overscroll-behavior-y: none;
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  width: 100%;
+  max-height: fit-content;
+}
+
+/* -- HEADER --*/
+.applogo {
+    width: 6rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #64DA8E;
+    color: #fff;
+    width: 100%;
+    padding: 1rem 2rem 1rem 2rem;
+    animation: fadeIn 1s ease;
+}
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+header .hamburger {
+    width: 1.5rem;
+    display: none;
+    cursor: pointer;
+}
+header .nav {
+    display: flex;
+    gap: 2rem;
+}
+header .nav a {
+    display: inline-flex;
+    position: relative;
+    color: #000000;
+    text-decoration: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.userutil {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    cursor: pointer;
+}
+
+.userutil .util {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.userutil .util p {
+    color: #000000;
+}
+
+.userutil .utilimg {
+    width: 1.2rem;
+    margin-right: 0.2rem;
+    position: relative;
+}
+
+.signin {
+    color: #fff;
+    background: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-wrap: nowrap;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* -- DROPDOWN SYSTEM -- */
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%; 
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    background-color: #ffffff;
+    min-width: 580px;
+    box-shadow: 0px 15px 35px rgba(0,0,0,0.15);
+    border-radius: 15px;
+    padding: 2.5rem;
+    z-index: 1000;
+    margin-top: 10px; 
+}
+
+/* Invisible bridge to prevent menu closing on mouse move */
+.dropdown-content::before {
+    content: "";
+    position: absolute;
+    top: -20px; 
+    left: 0;
+    width: 100%;
+    height: 20px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-grid {
+    display: flex;
+    gap: 4rem;
+}
+
+.dropdown-grid .column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.dropdown-grid h3 {
+    font-size: 1.1rem;
+    color: #000;
+    margin: 1.5rem 0 0.8rem 0;
+    font-weight: 700;
+}
+
+.dropdown-grid h3:first-child {
+    margin-top: 0;
+}
+
+.dropdown-grid a {
+    color: #444 !important; 
+    font-size: 0.95rem !important;
+    padding: 6px 0 !important;
+    font-weight: 400 !important;
+}
+
+.dropdown-grid a:hover {
+    color: #000000 !important;
+}
+
+/* Ensure sub-links in dropdown don't get the underline animation */
+.dropdown-content a::after {
+    display: none !important;
+}
+
+/* -- MAIN -- */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1s ease;
+    width: 100%;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background-image: url("assets/images/beach.png");
+    width: 100%;
+    height: 500px;
+}
+
+.hero h1 {
+    text-align: center;
+}
+
+.hero .discover-btn {
+    color: #fff;
+    background: #000;
+    border: none;
+    padding: 1.0rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.travel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #ffffff;
+    padding: 1rem 1rem;
+    border-radius: 50px; /* Modern "Pill" shape */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle floating shadow */
+    width: 80%;
+    /*max-width: 800px; */ /* Prevents it from getting too wide */
+    border: 2px solid #000000;
+    margin: 2rem;
+}
+
+/* Style the groups */
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex: 1; /* Makes them grow equally */
+    padding: 0.5rem;
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    width: 100%;
+    max-width: 150px; /* Prevents text fields from becoming too massive */
+    font-size: 1rem;
+    color: #333;
+}
+
+.to-text {
+    color: #999;
+    font-weight: 500;
+    padding: 0 1rem;
+    flex: 0 0 auto;
+}
+
+/* Style the button */
+.travel-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+
+.travel-btn:hover {
+    transform: scale(1.05);
+}
+
+.paperplane {
+    width: 1rem;
+}
+
+/* Container to allow mouse dragging/scrolling */
+.marquee-container {
+    overflow-x: auto;
+    cursor: grab;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.marquee-row {
+    display: flex;
+    gap: 1.5rem;
+    width: fit-content; /* Ensure row takes width of contents */
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Row 1: Left to Right */
+.marquee-l-to-r {
+    animation: scroll-l-to-r 20s linear infinite;
+}
+
+/* Row 2: Right to Left */
+.marquee-r-to-l {
+    animation: scroll-r-to-l 20s linear infinite;
+}
+
+/* Card Styling */
+.place {
+    flex: 0 0 220px; /* Fixed width for cards */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.place-img {
+    width: 220px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    margin-bottom: 0.8rem;
+}
+
+.place h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #000000;
+    color: white;
+    padding: 2rem;
+    margin-top: 5rem;
+    position: relative;
+    gap: 25px;
+  }
+  
+  .footer-column {
+    flex: 1;
+    margin: 0 20px;
+    min-width: 200px;
+  }
+  
+  .footer-h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-left: 4px solid white;
+    padding-left: 10px;
+    color: #ffffff;
+  }
+  
+  .footer-paragraph {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ffffff;
+  }
+  
+  .footer-links {
+    list-style: none;
+  }
+  
+  .footer-links li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .footer-links a:hover {
+    color: white;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .social-icons img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .social-icons img:hover {
+    transform: scale(1.1);
+  }
+  
+  .footer-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .footer-text1,
+  .footer-text2 {
+    color: white;
+    text-align: center;
+  }
+  
+  .footer-text1 {
+    font-size: 15px;
+  }
+  
+  .footer-text2 {
+    font-size: 12px;
+  }
+
+.name-credit {
+    color: white;
+    font-size: 0.9em;
+}
+.name-credit:hover {
+  color: white;
+}
+/* -- RESPONSIVE -- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    header .hamburger {
+        display: block;
+    }
+    .nav {
+        display: none;
+        visibility: hidden;
+        max-width: 0;
+    }
+    .hero {
+        height: 300px;
+    }
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    .travel {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+
+    }
+    .input-group {
+        width: 90%;
+        border-bottom: 1px solid #000000; /* Divider for mobile list view */
+        padding-bottom: 0.5rem;
+    }
+    .to-text {
+        display: none; /* Hide "to" text on smaller screens */
+    }
+    .travel-btn {
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .place { flex: 0 0 160px; }
+    .place-img { width: 160px; height: 220px; }
+}
+
+@media (max-width: 425px) {
+    main {
+        width: 100%;
+    }
+    body {
+        width: 100%;
+    }
+    header {
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+    .nav {
+        display: none;
+        visibility: hidden;
+    }
+    .userutil .util{
+        display: none;
+    }
+    .hero {
+        height: 250px;
+    }
+    .hero h1 {
+        font-size: 1rem;
+    }
+    .travel {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+}
+
+/* -- ANIMATIONS & EFFECTS -- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.signin:hover {
+    transform: scale(1.1);
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-out;
+}
+
+/* Keep underline visible on hover and during active dropdown interaction */
+.nav a:hover::after,
+.dropdown:hover .dropbtn::after {
+    transform: scaleX(1);
+}
+
+.discover-btn:hover {
+    transform: scale(1.1);
+}
+
+.userutil .util:hover {
+    text-shadow: #000000 0px 5px 5px;
+}
+
+.travel .loc-btn:hover {
+    transform: scale(1.1);
+}
+
+@keyframes scroll-l-to-r {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes scroll-r-to-l {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
