@@ -108,3 +108,14 @@ function displayResult(lat, lon, address) {
 
 // Execute the program
 getUserLocationAndAddress();
+
+
+const discoverBtn = document.getElementById('discover');
+const placesSection = document.getElementById('places');
+
+discoverBtn.addEventListener('click', () => {
+  placesSection.scrollIntoView({ 
+    behavior: 'smooth', 
+    block: 'start' 
+  });
+});
