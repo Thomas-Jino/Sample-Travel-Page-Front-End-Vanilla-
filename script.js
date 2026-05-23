@@ -125,10 +125,23 @@ const hamburger = document.getElementById('hamburger');
 const hamburgerImg = document.getElementById('hamburger-img');
 const util = document.getElementById('util');
 const close = document.getElementById('close');
-const header = document.querySelector('header');
 const dropBtns = document.querySelectorAll('.dropbtn');
+const SignIn = document.getElementById('signin-btn');
+const SignPOP = document.getElementById('SignPOP');
+const closeSign = document.getElementById('close-sign');
+const crpeye = document.getElementById('crpeye');
+const copeye = document.getElementById('copeye');
+const crpin = document.getElementById('crpin');
+const copin = document.getElementById('copin');
 
-let state = 'closed';
+const header = document.querySelector('header');
+const main = document.querySelector('main');
+const footer = document.querySelector('footer');
+
+SignPOP.style.display = 'none'; // Ensure the sign-in popup is hidden on page load
+
+let acstat = '0';
+let hstate = 'closed';
 
 hamburger.addEventListener('click', () => {
   // Toggle the master class on the header
@@ -136,12 +149,12 @@ hamburger.addEventListener('click', () => {
   
   if (header.classList.contains('mobile-active')) {
     hamburgerImg.src = 'assets/images/close.png';
-    state = 'open'; // Preserved your state logic
+    hstate = 'open'; // Preserved your state logic
     header.style.backgroundColor = '#fff';
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
   } else {
     hamburgerImg.src = 'assets/images/hamburger.png';
-    state = 'closed'; // Preserved your state logic
+    hstate = 'closed'; // Preserved your state logic
     header.style.backgroundColor = '#64DA8E'; // Removed the space from your hex code
     document.body.style.overflow = ''; // Restore scrolling
     
@@ -171,4 +184,39 @@ dropBtns.forEach(btn => {
             content.classList.toggle('show-mobile');
         }
     });
+});
+
+
+SignIn.addEventListener('click', () => {
+  SignPOP.style.display = 'flex';
+  header.style.filter = 'blur(2px)';
+  main.style.filter = 'blur(2px)';
+  footer.style.filter = 'blue(2px)';
+});
+
+closeSign.addEventListener('click', () => {
+  SignPOP.style.display = 'none';
+  header.style.filter = 'none';
+  main.style.filter = 'none';
+  footer.style.filter = 'none';
+});
+
+crpeye.addEventListener('click', () => {
+  if (crpin.type === "password"){
+    crpin.type = "text";
+    crpeye.src = "assets/images/crossedeye.png";
+  }else {
+    crpin.type = "password";
+    crpeye.src = "assets/images/eye.png";
+  }
+});
+
+copeye.addEventListener('click', () => {
+  if (copin.type === "password"){
+    copin.type = "text";
+    copeye.src = "assets/images/crossedeye.png";
+  }else {
+    copin.type = "password";
+    copeye.src = "assets/images/eye.png";
+  }  
 });
