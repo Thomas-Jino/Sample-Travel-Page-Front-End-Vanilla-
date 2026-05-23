@@ -122,8 +122,25 @@ discoverBtn.addEventListener('click', () => {
 
 
 const hamburger = document.getElementById('hamburger');
+const hamburgerImg = document.getElementById('hamburger-img');
 const util = document.getElementById('util');
+const close = document.getElementById('close');
+const header = document.querySelector('header');
+
+let state = 'closed';
 
 hamburger.addEventListener('click', () => {
+  if (state === 'closed') {
+    hamburgerImg.src = 'assets/images/close.png';
+    state = 'open';
+    header.style.backgroundColor = '#fff';
+  }else {
+    hamburgerImg.src = 'assets/images/hamburger.png';
+    state = 'closed';
+    header.style.backgroundColor = '#64DA8E';
+  }
   
+  if (util.style.display === '' || util.style.display === 'none') {
+    console.log('Opening menu');
+  }
 });
