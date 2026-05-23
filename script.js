@@ -120,27 +120,55 @@ discoverBtn.addEventListener('click', () => {
   });
 });
 
-
+// Navigation / Hamburger Variables
 const hamburger = document.getElementById('hamburger');
 const hamburgerImg = document.getElementById('hamburger-img');
 const util = document.getElementById('util');
 const close = document.getElementById('close');
 const header = document.querySelector('header');
+const dropBtns = document.querySelectorAll('.dropbtn');
 
 let state = 'closed';
 
 hamburger.addEventListener('click', () => {
-  if (state === 'closed') {
+  // Toggle the master class on the header
+  header.classList.toggle('mobile-active');
+  
+  if (header.classList.contains('mobile-active')) {
     hamburgerImg.src = 'assets/images/close.png';
-    state = 'open';
+    state = 'open'; // Preserved your state logic
     header.style.backgroundColor = '#fff';
-  }else {
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  } else {
     hamburgerImg.src = 'assets/images/hamburger.png';
-    state = 'closed';
-    header.style.backgroundColor = '#64DA8E';
+    state = 'closed'; // Preserved your state logic
+    header.style.backgroundColor = '#64DA8E'; // Removed the space from your hex code
+    document.body.style.overflow = ''; // Restore scrolling
+    
+    // Cleanup: Close any open submenus when the main menu closes
+    document.querySelectorAll('.dropdown-content.show-mobile').forEach(content => {
+        content.classList.remove('show-mobile');
+    });
   }
   
-  if (util.style.display === '' || util.style.display === 'none') {
+  // Preserved your console logic
+  if (util && (util.style.display === '' || util.style.display === 'none')) {
     console.log('Opening menu');
   }
+});
+
+// Dropdown Accordion Logic for Mobile
+dropBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        // Only run this logic if we are in mobile view
+        if (window.innerWidth <= 768) {
+            e.preventDefault(); // Stop the 'href='#' from jumping the page to the top
+            
+            // Find the immediate dropdown-content sibling next to the clicked button
+            const content = btn.nextElementSibling;
+            
+            // Toggle visibility class
+            content.classList.toggle('show-mobile');
+        }
+    });
 });

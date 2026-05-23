@@ -529,3 +529,93 @@ main {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
 }
+
+/* -- NEW: MOBILE MENU OVERLAY & ACCORDION -- */
+@media (max-width: 768px) {
+    /* Triggers the full-screen white overlay when JS adds the class */
+    header.mobile-active {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #ffffff !important;
+        flex-direction: column;
+        align-items: flex-start;
+        z-index: 9999;
+        padding: 1.5rem 2rem;
+        overflow-y: auto; /* Allows scrolling if accordions get too long */
+    }
+
+    /* Keeps logo and close button aligned at the top */
+    header.mobile-active .logo {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    /* Resets the nav from hidden to a flex column */
+    header.mobile-active .nav {
+        display: flex;
+        flex-direction: column;
+        visibility: visible;
+        max-width: 100%;
+        width: 100%;
+        margin-top: 3rem;
+        gap: 2rem;
+        flex: 1; /* Pushes the utility buttons to the bottom of the screen */
+    }
+
+    header.mobile-active .dropdown {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    /* Converts absolute dropdowns into normal static layout */
+    header.mobile-active .dropdown-content {
+        display: none; /* Hidden by default on mobile */
+        position: static; /* Drops it into the normal document flow */
+        min-width: 100%;
+        box-shadow: none;
+        padding: 1rem 0 0 1rem;
+    }
+
+    /* Toggled via JavaScript */
+    header.mobile-active .dropdown-content.show-mobile {
+        display: block;
+    }
+
+    header.mobile-active .dropdown-grid {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* Brings back and aligns the utilities at the bottom */
+    header.mobile-active .userutil {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        margin-top: auto; 
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    header.mobile-active .userutil .util {
+        display: flex !important; /* Overrides the display: none from your 425px query */
+    }
+
+    /* Extracts the Sign In button from the bottom row and pins it to the top right */
+    header.mobile-active .signin {
+        position: absolute;
+        top: 1.5rem;
+        right: 2rem;
+        margin: 0;
+    }
+}
+
+@media (max-width: 475px){
+    .userutil .util {
+        display: none !important;
+    }
+}
