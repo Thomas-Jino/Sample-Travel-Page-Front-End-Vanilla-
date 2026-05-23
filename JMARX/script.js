@@ -119,3 +119,11 @@ discoverBtn.addEventListener('click', () => {
     block: 'start' 
   });
 });
+
+
+const hamburger = document.getElementById('hamburger');
+const util = document.getElementById('util');
+
+hamburger.addEventListener('click', () => {
+  
+});

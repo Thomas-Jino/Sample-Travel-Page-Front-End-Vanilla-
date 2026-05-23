@@ -39,6 +39,8 @@ header .hamburger {
     width: 1.5rem;
     display: none;
     cursor: pointer;
+    background: none;
+    border: none;
 }
 header .nav {
     display: flex;
@@ -458,7 +460,7 @@ main {
         display: none;
         visibility: hidden;
     }
-    .userutil .util{
+    .userutil .util {
         display: none;
     }
     .hero {
