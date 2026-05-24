@@ -726,6 +726,9 @@ footer {
         gap: 2rem;
         align-items: center;
     }
+    .SignPOP .close-sign {
+        margin-right: 2.2rem;
+    }
 }
 
 /* -- ANIMATIONS & EFFECTS -- */

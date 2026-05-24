@@ -201,7 +201,9 @@ SignIn.addEventListener('click', () => {
   SignPOP.style.display = 'flex';
   header.style.filter = 'blur(2px)';
   main.style.filter = 'blur(2px)';
-  footer.style.filter = 'blue(2px)';
+  footer.style.filter = 'blur(2px)';
+  Mytrips.style.filter = 'blur(2px)';
+  document.querySelector('body').style.overflowY = 'hidden';
 });
 
 closeSign.addEventListener('click', () => {
@@ -209,6 +211,8 @@ closeSign.addEventListener('click', () => {
   header.style.filter = 'none';
   main.style.filter = 'none';
   footer.style.filter = 'none';
+  Mytrips.style.filter = 'none';
+  document.querySelector('body').style.overflowY = 'auto';
 });
 
 crpeye.addEventListener('click', () => {
