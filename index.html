@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="google-translate-container" id="translate-banner" style="display: none;">
+        <div id="google_translate_element"></div>
+        <button id="close-translate" class="close-translate-btn">✕</button>
+    </div>
+    
     <header>
         <div class="logo">
             <button class="hamburger" id="hamburger">
@@ -114,7 +119,7 @@
                 <p>Help</p>
             </div>
             <div class="util" id="util">
-                <p>English</p>
+                <p id="lang-btn">English</p>
             </div>
             <div class="util" id="util">
                 <img src="assets/images/bag.png" alt="" class="utilimg">
@@ -169,11 +174,9 @@
             <p>Discover handpicked destinations and luxury experiences tailored to your travel preferences.</p>
         </div>
 
-        <!-- This is where JavaScript will inject the 3 cards -->
         <div id="pcomponent"></div>
 
 
-        <!-- The Reusable Card Blueprint -->
         <template id="trip-card-template">
             <div class="trip-card">
                 <div class="trip-card-banner">
@@ -259,5 +262,12 @@
         </div>
     </footer>
     <script src="script.js"></script>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>

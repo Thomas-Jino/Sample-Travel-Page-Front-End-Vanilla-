@@ -129,10 +129,30 @@ const copeye = document.getElementById('copeye');
 const crpin = document.getElementById('crpin');
 const copin = document.getElementById('copin');
 
+// Translation specific elements
+const langBtn = document.getElementById('lang-btn');
+const translateBanner = document.getElementById('translate-banner'); // Updated ID
+const closeTranslate = document.getElementById('close-translate');   // New Close Button
+
 
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 const footer = document.querySelector('footer');
+
+// Translate Toggle (Opens the banner)
+langBtn.addEventListener('click', () => {
+    if (translateBanner.style.display === 'none' || translateBanner.style.display === '') {
+        translateBanner.style.display = 'flex'; // Changed to flex to match CSS
+    } else {
+        translateBanner.style.display = 'none';
+    }
+});
+
+// Close Button Logic (Hides the banner)
+closeTranslate.addEventListener('click', () => {
+    translateBanner.style.display = 'none';
+});
+
 
 // Discover Button Animation
 
