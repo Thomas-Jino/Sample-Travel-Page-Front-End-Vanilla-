@@ -110,17 +110,12 @@ function displayResult(lat, lon, address) {
 getUserLocationAndAddress();
 
 
+// UI Actions
+
+
+// Elements
 const discoverBtn = document.getElementById('discover');
 const placesSection = document.getElementById('places');
-
-discoverBtn.addEventListener('click', () => {
-  placesSection.scrollIntoView({ 
-    behavior: 'smooth', 
-    block: 'start' 
-  });
-});
-
-// Navigation / Hamburger Variables
 const hamburger = document.getElementById('hamburger');
 const hamburgerImg = document.getElementById('hamburger-img');
 const util = document.getElementById('util');
@@ -134,13 +129,25 @@ const copeye = document.getElementById('copeye');
 const crpin = document.getElementById('crpin');
 const copin = document.getElementById('copin');
 
+
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 const footer = document.querySelector('footer');
 
-SignPOP.style.display = 'none'; // Ensure the sign-in popup is hidden on page load
+// Discover Button Animation
+
+discoverBtn.addEventListener('click', () => {
+  placesSection.scrollIntoView({ 
+    behavior: 'smooth', 
+    block: 'start' 
+  });
+});
 
 let acstat = '0';
+
+
+// Hamburger
+
 let hstate = 'closed';
 
 hamburger.addEventListener('click', () => {
@@ -186,6 +193,9 @@ dropBtns.forEach(btn => {
     });
 });
 
+// Sign In Button
+
+SignPOP.style.display = 'none'; // Ensure the sign-in popup is hidden on page load
 
 SignIn.addEventListener('click', () => {
   SignPOP.style.display = 'flex';
@@ -219,4 +229,62 @@ copeye.addEventListener('click', () => {
     copin.type = "password";
     copeye.src = "assets/images/eye.png";
   }  
+});
+
+
+// Trips Menu
+
+const Mytrips = document.getElementById("MyTrips");
+const openTrip = document.getElementById("Tripsbtn");
+const closeTrip = document.getElementById("close-trips");
+
+const tripsData = [
+    {
+        title: "Amalfi Coast, Italy",
+        description: "Cliffside suites, private yacht experiences, and Michelin-star dining along Italy’s most iconic coastline.",
+        tags: "Luxury Stay · Private Tours · Fine Dining",
+        image: "assets/images/italy.png"
+    },
+    {
+        title: "Dubai, UAE",
+        description: "An indulgent blend of modern luxury, desert adventures, and world-class wellness experiences.",
+        tags: "Premium Resort · Spa Retreat · Exclusive Access",
+        image: "assets/images/dubai.png"
+    },
+    {
+        title: "Maldives",
+        description: "Overwater villas, crystal-clear lagoons, and personalized experiences designed for complete relaxation",
+        tags: "Private Villa · Ocean View · Honeymoon Favorite",
+        image: "assets/images/maldives.png"
+    }
+];
+
+const container = document.getElementById('pcomponent');
+const template = document.getElementById('trip-card-template');
+
+tripsData.forEach(trip => {
+    // Clone the nested template
+    const cardClone = template.content.cloneNode(true);
+    
+    // Bind textual data
+    cardClone.querySelector('.trip-title').textContent = trip.title;
+    cardClone.querySelector('.trip-description').textContent = trip.description;
+    cardClone.querySelector('.trip-tags').textContent = trip.tags;
+    
+    // Bind background image dynamically
+    const banner = cardClone.querySelector('.trip-card-banner');
+    banner.style.backgroundImage = `url('${trip.image}')`;
+    
+    // Inject straight into the active display wrapper
+    container.appendChild(cardClone);
+});
+
+openTrip.addEventListener('click', () => {
+  Mytrips.classList.add('active');
+  Mytrips.style.display = 'flex';
+});
+
+closeTrip.addEventListener('click', () => {
+  Mytrips.classList.remove('active');
+  Mytrips.style.display = 'none';
 });

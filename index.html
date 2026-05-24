@@ -118,7 +118,7 @@
             </div>
             <div class="util" id="util">
                 <img src="assets/images/bag.png" alt="" class="utilimg">
-                <p>My Trips</p>
+                <p id="Tripsbtn">My Trips</p>
             </div>
             <button class="signin" id="signin-btn">Sign In</button>
         </div>
@@ -156,6 +156,36 @@
             </button>
             <p>Already have an account? <a href="#">Log In</a></p>
         </div>
+    </section>
+
+    <section class="MyTrips" id="MyTrips">
+        <div class="heading">
+            <h2>Trips</h2>
+            <img src="assets/images/close.png" alt="" class="close-trips" id="close-trips">
+        </div>
+        <div>
+            <h2>Recommended for you</h2>
+            <br>
+            <p>Discover handpicked destinations and luxury experiences tailored to your travel preferences.</p>
+        </div>
+
+        <!-- This is where JavaScript will inject the 3 cards -->
+        <div id="pcomponent"></div>
+
+
+        <!-- The Reusable Card Blueprint -->
+        <template id="trip-card-template">
+            <div class="trip-card">
+                <div class="trip-card-banner">
+                    <div class="trip-blur-bg">
+                        <h4 class="trip-title"></h4>
+                        <p class="trip-description"></p>
+                    </div>
+                    <button class="expjbtn">Explore Journey</button>
+                </div>
+                <p class="trip-tags"></p>
+            </div>
+        </template>
     </section>
 
     <main>
