@@ -253,6 +253,58 @@ copeye.addEventListener('click', () => {
   }  
 });
 
+//=====================================\\
+// --- SIGN-UP Backend Integration --- \\\
+/* ------------------------------------ */
+
+async function SignUp() {
+  const Email = document.getElementById("email").value;
+  const crpass = crpin.value;
+  const copass = copin.value;
+
+  if (crpass !== copass) {
+    alert("Error: Passwords do not match!");
+    return;
+  }
+
+  const newUser = {
+    email: Email,
+    password: crpass
+  };
+
+  updateStatus("Sending registration details to server...");
+
+  try {
+    const response = await fetch('http://127.0.0.1:8000/api/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUser)
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      updateStatus("Registration Successful!");
+      alert(`Welcome aboard! ${data.message || 'Account created successfully.'}`);
+      
+      SignPOP.style.display = 'none';
+      document.querySelector('body').style.overflowY = 'auto';
+    } else {
+      updateStatus(`Registration failed: ${data.detail || 'Unknown error'}`);
+      alert(`Sign up failed: ${data.detail || 'Please check your inputs.'}`);
+    }
+
+  } catch (error) {
+    console.error("Network Error during sign up:", error);
+    updateStatus("Error: Unable to connect to the authentication server.");
+    alert("Could not reach the server. Is your backend running?");
+  }
+}
+
+// FIXED: Removed the parentheses () so the function only fires when clicked
+document.getElementById("signbtn").onclick = SignUp;
 
 // ==========================================
 // Dynamic Travel Portfolio / Cards Data Setup
